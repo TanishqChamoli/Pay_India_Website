@@ -1,3 +1,4 @@
+<?php include("./backend/head_check_retailer.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

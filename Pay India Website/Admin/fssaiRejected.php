@@ -1,4 +1,26 @@
 <?php include("Admin1_backend/head_check.php"); ?>
+<?php
+if (isset($_GET['id'])) {
+	$conn = mysqli_connect('localhost', 'root', '', 'payindia');
+	$sql = "SELECT * FROM ";
+	$id = $_GET['id'];
+	$result = mysqli_query($conn, $sql);
+	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	$sql = "UPDATE fssai SET status='false' WHERE id ='$id'";
+	$result = mysqli_query($conn, $sql);
+	if ($result == 1) {
+		$address = "http://localhost/Pay%20India%20Website/Admin/fssaiRejected.php";
+		header("Location: " . $address);
+		die();
+	}
+}
+?>
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'payindia');
+$sql = "SELECT * FROM fssai where status='reject'";
+$result = mysqli_query($conn, $sql);
+$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,15 +38,90 @@
 	<?php include("sidenav.php"); ?>
 	<?php include("navbar.php"); ?>
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
-		<div class="main-page-header">
-			<h2>Select a form from navigation menu to view here.</h2>
+		<div class="table-responsive">
+			<?php if (sizeof($ans) > 0) { ?>
+				<table class="table table-bordered" id="datatable">
+					<thead>
+						<tr>
+							<th scope="col">Aadhar Card number</th>
+							<th scope="col">Pan Card number</th>
+							<th scope="col">Business details</th>
+							<th scope="col">Email</th>
+							<th scope="col">Mobile</th>
+							<th scope="col">Photo Name</th>
+							<th scope="col">NOC</th>
+							<th scope="col">Address Proof</th>
+							<th scope="col">Other Documents</th>
+							<th scope="col">Comments</th>
+							<th scope="col">Accept-Retry</th>
+						</tr>
+					</thead>
+					<?php
+					for ($x = 0; $x < sizeof($ans); $x++) {
+					?>
+						<tbody>
+							<tr>
+								<td>
+									<p><?php echo $ans[$x]['aadhar_no']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['pan_card_no']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['business_detail']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['email']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['mobile_number']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['photo_name']; ?></p>
+								</td>
+								<td>
+									<?php if ($ans[$x]['noc'] != "") { ?>
+										<p><a href="../uploads/<?php echo $ans[$x]['noc']; ?>">NOC</a></p>
+									<?php } else {
+										echo "No attachment";
+									} ?>
+								</td>
+								<td>
+									<?php if ($ans[$x]['address_proof'] != "") { ?>
+										<p><a href="../uploads/<?php echo $ans[$x]['address_proof']; ?>">Address Proof</a></p>
+									<?php } else {
+										echo "No attachment";
+									} ?>
+								</td>
+								<td>
+									<?php if ($ans[$x]['other_document'] != "") { ?>
+										<p><a href="../uploads/<?php echo $ans[$x]['other_document']; ?>">Other document</a></p>
+									<?php } else {
+										echo "No attachment";
+									} ?>
+								</td>
+								<td>
+									<?php if ($ans[$x]['comments'] != "") { ?>
+										<p><?php echo $ans[$x]['comments']; ?></p>
+									<?php } else {
+										echo "No comments";
+									} ?>
+								</td>
+								<td>
+									<a href="http://localhost/Pay%20India%20Website/Admin/fssaiRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>
+								</td>
+							</tr>
+					<?php
+					}
+				} else {
+					echo "<h2>There is no data</h2>";
+				}
+					?>
+						</tbody>
+				</table>
 		</div>
-	</div>
 
 	</div>
-
-	</div>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

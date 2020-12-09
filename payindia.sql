@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2020 at 01:46 PM
+-- Generation Time: Dec 09, 2020 at 05:53 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -119,7 +119,8 @@ CREATE TABLE `admin2_replies` (
 --
 
 INSERT INTO `admin2_replies` (`local_id`, `type`, `reply`, `comments`, `q_id`, `date`) VALUES
-(15, 'pvc_card', '18-11-2020-5fb50976c8508aZVF08.jpg', 'Data ajsfadsadmdn', 7, '18-11-2020');
+(15, 'pvc_card', '18-11-2020-5fb50976c8508aZVF08.jpg', 'Data ajsfadsadmdn', 7, '18-11-2020'),
+(16, 'votercard', '27-11-2020-5fc0eee1bfc88Screenshot (13).png', 'Hogya kaam tera!', 7, '27-11-2020');
 
 -- --------------------------------------------------------
 
@@ -168,6 +169,14 @@ CREATE TABLE `fssai` (
   `comments` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fssai`
+--
+
+INSERT INTO `fssai` (`id`, `aadhar_no`, `pan_card_no`, `business_detail`, `email`, `mobile_number`, `photo_name`, `noc`, `address_proof`, `other_document`, `comments`, `status`) VALUES
+(3, 1234567890, 1234567890, 'Sonam', 'sonam@gmail.com', 987654321, '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '', 'This is a test file.', 'false'),
+(4, 1234567890, 1234567890, 'Sonam', 'sonam@gmail.com', 987654321, '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '', 'This is a test file.', 'false');
 
 -- --------------------------------------------------------
 
@@ -237,6 +246,13 @@ CREATE TABLE `itr_gst` (
   `other_document` varchar(50) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `itr_gst`
+--
+
+INSERT INTO `itr_gst` (`id`, `client_name`, `firm_name`, `client_email`, `mobile_number`, `firm_type`, `office_address`, `city`, `pincode`, `acc_no`, `ifsc`, `nature_of_business_activity`, `placeofbusiness`, `photo`, `confirm_docs`, `other_document`, `status`) VALUES
+(4, 'Tanishq Chamoli', 'Tanishq', 'tanishqspike114@gmail.com', '1234567890', 'option1', '#463 M Fouji colony Kharar', 'Kharar', '140210', '-1234567890', '12345678909', 'Hello', 'option1', 'Tanishq ChamoliScreenshot (12).png', 'on', '', 'false');
 
 -- --------------------------------------------------------
 
@@ -321,6 +337,46 @@ INSERT INTO `pvc_card` (`id`, `cname`, `fpass`, `dispatch_address`, `mobile`, `d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `retailers`
+--
+
+CREATE TABLE `retailers` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `cname` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `nii` int(10) NOT NULL,
+  `tir` int(10) NOT NULL,
+  `np` int(10) NOT NULL,
+  `grr` int(10) NOT NULL,
+  `rbr` int(10) NOT NULL,
+  `lbr` int(10) NOT NULL,
+  `vir` int(10) NOT NULL,
+  `upr` int(10) NOT NULL,
+  `gstreg` int(10) NOT NULL,
+  `pfrefund` int(10) NOT NULL,
+  `fastpanrate` int(10) NOT NULL,
+  `pvc` int(10) NOT NULL,
+  `nadr` int(10) NOT NULL,
+  `udyog` int(10) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(10) NOT NULL DEFAULT 'true'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `retailers`
+--
+
+INSERT INTO `retailers` (`id`, `email`, `mobile`, `cname`, `address`, `nii`, `tir`, `np`, `grr`, `rbr`, `lbr`, `vir`, `upr`, `gstreg`, `pfrefund`, `fastpanrate`, `pvc`, `nadr`, `udyog`, `password`, `create_date`, `status`) VALUES
+(5, 'retailer@test.com', '1234567890', 'Test', 'Home-address', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, '$2y$10$8wpa0qJEmELkhMwFFyBhnOZOMAalc378GE7jUuEp6/.opgI6l.SrO', '2020-11-27 13:39:07', 'true'),
+(6, 'test@test.com', '1234567890', 'Sonam', 'home', 1, 1, 1, 1, 1, 0, 11, 1, 1, 1, 11, 1, 1, 1, '$2y$10$RNzoMMvKM.0kqhIzAgk2m.jS8iKfo783.18WRj7DdalFnmKy.aR5i', '2020-11-27 14:08:15', 'false'),
+(7, 'arjun@test', '1234567890', 'Arjun', 'home', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '$2y$10$44hUGs6OgQeZd37Ajrv4F.9hWA5BQ0ljmpLFH1X1d3Mi/qBcdeFfi', '2020-11-27 17:43:03', 'true');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `votercard`
 --
 
@@ -346,6 +402,13 @@ CREATE TABLE `votercard` (
   `comments` varchar(500) DEFAULT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `votercard`
+--
+
+INSERT INTO `votercard` (`id`, `name`, `dob`, `mobile`, `relative_name`, `relative_type`, `street`, `village`, `postoffice`, `pincode`, `state`, `district`, `ageproof_option`, `addressproof_option`, `gender`, `ageproofdocument`, `addressproofdocument`, `otherdocument`, `comments`, `status`) VALUES
+(7, 'Tanishq', '2000-11-24', '1234567890', 'qwert', 'option1', 'hhvhv', 'Mohali', 'Mohali', 160021, 'Punjab', 'option1', 'option1', 'option1', '', '27-11-2020-5fc0ee13030a6Screenshot (12).png', '27-11-2020-5fc0ee1303e06Screenshot (12).png', '', 'Hello there', 'true');
 
 --
 -- Indexes for dumped tables
@@ -430,6 +493,12 @@ ALTER TABLE `pvc_card`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `retailers`
+--
+ALTER TABLE `retailers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `votercard`
 --
 ALTER TABLE `votercard`
@@ -467,7 +536,7 @@ ALTER TABLE `admin2`
 -- AUTO_INCREMENT for table `admin2_replies`
 --
 ALTER TABLE `admin2_replies`
-  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `bill_payment`
@@ -479,7 +548,7 @@ ALTER TABLE `bill_payment`
 -- AUTO_INCREMENT for table `fssai`
 --
 ALTER TABLE `fssai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `index_pan_card_uti`
@@ -497,7 +566,7 @@ ALTER TABLE `insurance`
 -- AUTO_INCREMENT for table `itr_gst`
 --
 ALTER TABLE `itr_gst`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `msme`
@@ -518,10 +587,16 @@ ALTER TABLE `pvc_card`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `retailers`
+--
+ALTER TABLE `retailers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `votercard`
 --
 ALTER TABLE `votercard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

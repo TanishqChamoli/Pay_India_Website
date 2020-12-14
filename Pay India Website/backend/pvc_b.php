@@ -12,9 +12,16 @@ $document = $date->format('d-m-Y') . "-" . uniqid() . basename($_FILES["document
 $targetFilePath = $target_dir . $document;
 
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
+session_start();
+$retailer_email = $_SESSION['retailer'];
 
-$sql = "INSERT INTO pvc_card(cname,fpass,dispatch_address,mobile,document) 
-    VALUES('$cname','$fpass','$dispatchaddress','$mobile','$document')";
+$sql = "SELECT * FROM retailers WHERE email = '$retailer_email'";
+$result = mysqli_query($conn, $sql);
+$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$r_id = $ans[0]['id'];
+
+$sql = "INSERT INTO pvc_card(cname,fpass,dispatch_address,mobile,document,r_id) 
+    VALUES('$cname','$fpass','$dispatchaddress','$mobile','$document','$r_id')";
 // print($sql);
 
 if (mysqli_query($conn, $sql)) {

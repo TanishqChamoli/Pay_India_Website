@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2020 at 10:11 AM
+-- Generation Time: Dec 14, 2020 at 05:56 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -53,8 +53,16 @@ CREATE TABLE `aadhar_reprint` (
   `mobile` varchar(12) NOT NULL,
   `other_documents` varchar(600) DEFAULT NULL,
   `comments` varchar(100) DEFAULT NULL,
-  `status` varchar(100) NOT NULL DEFAULT 'false'
+  `status` varchar(100) NOT NULL DEFAULT 'false',
+  `r_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `aadhar_reprint`
+--
+
+INSERT INTO `aadhar_reprint` (`id`, `aadhar_no`, `mobile`, `other_documents`, `comments`, `status`, `r_id`) VALUES
+(10, '12', '12', '', '12', 'false', '5');
 
 -- --------------------------------------------------------
 
@@ -137,17 +145,19 @@ CREATE TABLE `bill_payment` (
   `operator_circle_1` varchar(50) NOT NULL,
   `due_date` date NOT NULL,
   `client_name` text NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'false'
+  `status` varchar(20) NOT NULL DEFAULT 'false',
+  `r_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bill_payment`
 --
 
-INSERT INTO `bill_payment` (`id`, `payment_type`, `ca_number`, `operator_circle`, `amount`, `operator_circle_1`, `due_date`, `client_name`, `status`) VALUES
-(3, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'false'),
-(4, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'reject'),
-(5, 'option1', '12345678901234567890', 'Punjab', 1213, 'Punjab State Power Corporation Ltd', '1111-11-24', 'Sonam Garg', 'false');
+INSERT INTO `bill_payment` (`id`, `payment_type`, `ca_number`, `operator_circle`, `amount`, `operator_circle_1`, `due_date`, `client_name`, `status`, `r_id`) VALUES
+(3, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'false', ''),
+(4, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'reject', ''),
+(5, 'option1', '12345678901234567890', 'Punjab', 1213, 'Punjab State Power Corporation Ltd', '1111-11-24', 'Sonam Garg', 'false', ''),
+(6, 'option2', '12456789', 'Punjab', 1500, 'Punjab State Power Corporation Ltd', '2020-12-15', 'Sonam Garg', 'false', '5');
 
 -- --------------------------------------------------------
 
@@ -323,16 +333,17 @@ CREATE TABLE `pvc_card` (
   `dispatch_address` varchar(600) NOT NULL,
   `mobile` varchar(20) NOT NULL,
   `document` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'false'
+  `status` varchar(20) NOT NULL DEFAULT 'false',
+  `r_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pvc_card`
 --
 
-INSERT INTO `pvc_card` (`id`, `cname`, `fpass`, `dispatch_address`, `mobile`, `document`, `status`) VALUES
-(6, 'Tanishq Chamoli', 'Password', 'Home address', '0987654321', '17-11-2020-5fb33ef62247faZVF08.jpg', 'false'),
-(7, 'Tanishq Chamoli', 'Password', 'Home address', '9888553116', '18-11-2020-5fb508498c153aZVF08.jpg', 'true');
+INSERT INTO `pvc_card` (`id`, `cname`, `fpass`, `dispatch_address`, `mobile`, `document`, `status`, `r_id`) VALUES
+(6, 'Tanishq Chamoli', 'Password', 'Home address', '0987654321', '17-11-2020-5fb33ef62247faZVF08.jpg', 'false', '5'),
+(7, 'Tanishq Chamoli', 'Password', 'Home address', '9888553116', '18-11-2020-5fb508498c153aZVF08.jpg', 'true', '5');
 
 -- --------------------------------------------------------
 
@@ -518,7 +529,7 @@ ALTER TABLE `aadharpan_link`
 -- AUTO_INCREMENT for table `aadhar_reprint`
 --
 ALTER TABLE `aadhar_reprint`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `admin1_replies`
@@ -542,7 +553,7 @@ ALTER TABLE `admin2_replies`
 -- AUTO_INCREMENT for table `bill_payment`
 --
 ALTER TABLE `bill_payment`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fssai`

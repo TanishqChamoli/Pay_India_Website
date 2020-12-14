@@ -1,5 +1,4 @@
 <?php
-session_start();
 $target_dir =  "../uploads/";
 $date = new DateTime();
 
@@ -18,7 +17,7 @@ if (!empty($_POST["comments"])) {
     $comments = $_POST['comments'];
 }
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-
+session_start();
 $retailer_email = $_SESSION['retailer'];
 
 $sql = "SELECT * FROM retailers WHERE email = '$retailer_email'";

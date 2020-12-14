@@ -5,6 +5,7 @@
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="profile.php">Profile</a>
+            <a class="dropdown-item" href="orders.php">Orders</a>
             <a class="dropdown-item" href="#">Wallet:243</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="./backend/logout.php">Log Out</a>

@@ -27,9 +27,16 @@ if (!empty($_POST["comments"])) {
 // echo $comments.$otherdocument;
 
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
+session_start();
+$retailer_email = $_SESSION['retailer'];
 
-$sql = "INSERT INTO aadharpan_link(name,mobile,aadhar_no,pan_card,dob,pincode,gender,other_document,comment) 
-    VALUES('$name','$mobile','$aadhar','$pan','$dob','$pincode','$gender','$otherdocument','$comments')";
+$sql = "SELECT * FROM retailers WHERE email = '$retailer_email'";
+$result = mysqli_query($conn, $sql);
+$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$r_id = $ans[0]['id'];
+
+$sql = "INSERT INTO aadharpan_link(name,mobile,aadhar_no,pan_card,dob,pincode,gender,other_document,comment,r_id) 
+    VALUES('$name','$mobile','$aadhar','$pan','$dob','$pincode','$gender','$otherdocument','$comments','$r_id')";
 
 // print($sql);
 

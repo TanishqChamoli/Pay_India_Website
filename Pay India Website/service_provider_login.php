@@ -21,7 +21,7 @@
               </div>
           
               <!-- Login Form -->
-              <form action="./Distributor/backend/login.php" method="post">
+              <form action="Distributor/mainpage.php">
                 <input type="text" id="login" class="fadeIn second" name="Email-id" placeholder="Email-id">
                 <input type="password" id="password" class="fadeIn third" name="Password" placeholder="Password">
                 <input type="submit" class="fadeIn fourth" value="Log In">

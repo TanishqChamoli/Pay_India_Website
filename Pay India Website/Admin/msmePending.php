@@ -35,8 +35,8 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 
 <body>
-	<?php include("sidenav.php"); ?>
-	<?php include("navbar.php"); ?>
+	<?php include("sidenav2.php"); ?>
+	<?php include("navbar2.php"); ?>
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
 		<div class="table-responsive">
 			<?php if (sizeof($ans) > 0) { ?>

@@ -1,4 +1,4 @@
-<?php include("Admin2_backend/head_check.php"); ?>
+<?php include("Admin1_backend/head_check.php"); ?>
 <?php
 if (isset($_GET['id'])) {
 	$conn = mysqli_connect('localhost', 'root', '', 'payindia');

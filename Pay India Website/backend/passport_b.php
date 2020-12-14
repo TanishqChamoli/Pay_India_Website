@@ -1,6 +1,6 @@
 <?php
 $target_dir =  "../uploads/";
-
+$date = new DateTime();
     $apply_for = $_POST['apply'];
     $type_of_application = $_POST['type-of-application'];
     $passport_type = $_POST['passporttype'];
@@ -62,31 +62,23 @@ $target_dir =  "../uploads/";
     $emergency_certi= $_POST['o-d-13'];
     $deported_from_other_country= $_POST['o-d-14'];
     $repatriated= $_POST['o-d-15'];
-    $comments = $_POST['comments'];
 
-    $proof_of_birth = $email.'_'.basename($_FILES["proof-of-birth"]["name"]);
-    $targetFilePath = $target_dir . $proof_of_birth;
-    move_uploaded_file($_FILES["proof-of-birth"]["tmp_name"], $targetFilePath);
+    $proof_of_birth = $_POST['proof_of_birth'];
 
-    $residential_birth_proof = $email.basename($_FILES["proof-present-residential-proof-birth"]["name"]);
-    $targetFilePath = $target_dir . $residential_birth_proof;
-    move_uploaded_file($_FILES["proof-present-residential-proof-birth"]["tmp_name"], $targetFilePath);
-
-    $other_document = $aadhar_no.basename($_FILES["otherdocument"]["name"]);
-    $targetFilePath = $target_dir . $other_document;
-    move_uploaded_file($_FILES["otherdocument"]["tmp_name"], $targetFilePath);
-
+    $residential_birth_proof = $_POST['proof-present-residential-proof-birth'];
+    $other_document = "";
+    if (!empty($_FILES["otherdocument"]["name"])) {
+        $other_document = $date->format('d-m-Y') . "-" . uniqid() . basename($_FILES["otherdocument"]["name"]);
+        $targetFilePath = $target_dir . $other_document;
+        echo  $targetFilePath;
+        move_uploaded_file($_FILES["otherdocument"]["tmp_name"], $targetFilePath);
+    }
+    $comments = "";
+    if (!empty($_POST["comments"])) {
+        $comments = $_POST['comments'];
+    }
     $conn = new mysqli('localhost','root','','payindia');
 
-    if($conn->connect_error)
-    {
-        echo "connection failed".$conn->connect_error ;
-    }
-
-    else
-    {
-        echo "DATABASE connected successfully</br>";
-    }
     $sql = "INSERT INTO passport(apply_for,type_of_application,passport_type,first_name,middle_name,surname,aadhar_no,marital_status,
     dob,birth_country_india,birthplace,state1,district,citizenship,pan_card_no,voter_id,education_qualification,
     emp_type,govt_servant,non_ncr,mark,other_names,name_changed,father_first_name,father_middle_name,father_surname,mother_first_name,
@@ -102,13 +94,14 @@ $target_dir =  "../uploads/";
     '$guardian_middle_name','$guardian_surname','$present_address','$house_no','$state_province','$present_district','$pincode',
     '$mobile_number','$email','$address1','$applicant_name','$applicant_mobile','$applicant_email','$certificate1','$passport_detail',
     '$applied_for_passport','$pending_proceeding','$warrant_or_summon','$warrant_for_arrest','$prohibit_departure','$convicted','$refused_denied_passport',
-    '$passport_impounded','$passport_revoked','$foreign_citizenship','$proof_of_birth','$residential_birth_proof','$other_document')";
+    '$passport_impounded','$passport_revoked','$foreign_citizenship','$passport_other_country','$surrendered','$renunciation','$emergency_certi',
+    '$deported_from_other_country','$repatriated','$comments','$proof_of_birth','$residential_birth_proof','$other_document')";
 
     if($conn->query($sql)==TRUE){
-        echo "Added successfully";
+        header("Location: ../passport.php?message=successfully added the info!");
     }
     else{
-        echo "try again !!";
+        header("Location: ../passport.php?message=insertion failed");
     }
 
 ?>

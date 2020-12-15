@@ -6,10 +6,10 @@ if (isset($_GET['id'])) {
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	$sql = "UPDATE insurance SET status='reject' WHERE id ='$id'";
+	$sql = "UPDATE insurance SET status='false' WHERE id ='$id'";
 	$result = mysqli_query($conn, $sql);
 	if ($result == 1) {
-		$address = "http://localhost/Pay%20India%20Website/Admin/insurancePending.php";
+		$address = "http://localhost/Pay%20India%20Website/Admin/insuranceRejected.php";
 		header("Location: " . $address);
 		die();
 	}
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 ?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-$sql = "SELECT * FROM insurance where status='false'";
+$sql = "SELECT * FROM insurance where status='reject'";
 $result = mysqli_query($conn, $sql);
 $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -46,8 +46,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 							<th scope="col">Registration Number</th>
 							<th scope="col">Policy Expired or not</th>
 							<th scope="col">Last Claim</th>
-							<th scope="col">Reject</th>
-							<th scope="col">Reply</th>
+							<th scope="col">Retry</th>
 						</tr>
 					</thead>
 					<?php
@@ -65,10 +64,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 									<p><?php echo $ans[$x]['last_claim']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurancePending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
-								</td>
-								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurance.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
+									<a href="http://localhost/Pay%20India%20Website/Admin/insuranceRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>
 								</td>
 							</tr>
 					<?php

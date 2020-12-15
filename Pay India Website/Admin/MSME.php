@@ -19,7 +19,7 @@
 		<div class="mt-4 mb-0 d-md-none">
 			<h2 class="formheader">MSME</h2>
 		</div>
-		<form class="form-container mt-4 form-padding-internal"  action="./Admin1_backend/msme_all.php" method="post" enctype="multipart/form-data">
+		<form class="form-container mt-4 form-padding-internal" action="./Admin1_backend/msme_all.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" required>
 			<div class="form-group">
 				<label class="required" for="myFile">Upload Document</label>

@@ -104,14 +104,17 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 									<p><?php echo $ans[$x]['placeofbusiness']; ?></p>
 								</td>
 								<td>
-									<p>
-										<p><a href="../uploads/<?php echo $ans[$x]['photo']; ?>">Uploaded Image</a></p>
+									<p><a href="../uploads/<?php echo $ans[$x]['photo']; ?>">Uploaded Image</a></p>
 								</td>
 								<td>
 									<p><a href="../uploads/<?php echo $ans[$x]['confirm_docs']; ?>">Confirm Documnent</a></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['other_document']; ?></p>
+									<p><?php if (strlen($ans[$x]['other_document'])>0) {
+											echo $ans[$x]['other_document'];
+										} else {
+											echo "No data";
+										} ?></p>
 								</td>
 								<td>
 									<a href="http://localhost/Pay%20India%20Website/Admin/gstPending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>

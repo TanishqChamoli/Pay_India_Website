@@ -18,8 +18,7 @@
 		<div class="mt-4 mb-0 d-md-none">
 			<h2 class="formheader">Passport</h2>
 		</div>
-		<form class="form-container mt-4 form-padding-internal"  action="./Admin2_backend/passport_all.php" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" required>
+		<form class="form-container mt-4 form-padding-internal">
 			<div class="form-group">
 				<label class="required" for="myFile">Upload Document</label>
 				<input class="form-control" type="file" id="myFile" name="filename">

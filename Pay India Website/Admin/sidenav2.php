@@ -9,6 +9,7 @@
                     <div id="voter-card" class="accordian-content collapse">
                         <a href="voterCard.php" class="sidenav-link">Upload</a>
                         <a href="voterCardPending.php" class="sidenav-link">Pending</a>
+                        <a href="voterCardRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
                 <div class="accordian">
@@ -19,6 +20,7 @@
                             <div id="aadhaarReprint" class="accordian-content collapse">
                                 <a href="AadhaarReprint.php" class="sidenav-link">Upload</a>
                                 <a href="aadhaarReprintPending.php" class="sidenav-link">Pending</a>
+                                <a href="aadhaarReprintRejected.php" class="sidenav-link">Rejected</a>
                             </div>
                         </div>
                         <div class="accordian">
@@ -26,10 +28,9 @@
                             <div id="aadhaarUTI" class="accordian-content collapse">
                                 <a href="AadhaarReprint.php" class="sidenav-link">Upload</a>
                                 <a href="aadhaarUTIPending.php" class="sidenav-link">Pending</a>
+                                <a href="aadhaarUTIRejected.php" class="sidenav-link">Rejected</a>
                             </div>
                         </div>
-                        <!-- <a href="AadhaarReprint.php" class="sidenav-link">Aadhaar Reprint</a>
-							<a href="AadhaarUTI.php" class="sidenav-link">Aadhaar UTI</a> -->
                     </div>
                 </div>
                 <div class="accordian">
@@ -37,6 +38,7 @@
                     <div id="passport" class="accordian-content collapse">
                         <a href="passport.php" class="sidenav-link">Upload</a>
                         <a href="passportPending.php" class="sidenav-link">Pending</a>
+                        <a href="passportRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
                 <div class="accordian">
@@ -44,6 +46,7 @@
                     <div id="pvc-card" class="accordian-content collapse">
                         <a href="pvcCard.php" class="sidenav-link">Upload</a>
                         <a href="pvcCardPending.php" class="sidenav-link">Pending</a>
+                        <a href="pvcCardRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
                 <div class="accordian">
@@ -51,6 +54,7 @@
                     <div id="billpayment" class="accordian-content collapse">
                         <a href="billPayment.php" class="sidenav-link">Upload</a>
                         <a href="billPaymentPending.php" class="sidenav-link">Pending</a>
+                        <a href="billPaymentRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
                 <div class="accordian">
@@ -58,6 +62,7 @@
                     <div id="insurance" class="accordian-content collapse">
                         <a href="insurance.php" class="sidenav-link">Upload</a>
                         <a href="insurancePending.php" class="sidenav-link">Pending</a>
+                        <a href="insuranceRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
                 <div class="accordian">
@@ -65,10 +70,9 @@
                     <div id="pancard" class="accordian-content collapse">
                         <a href="panCard.php" class="sidenav-link">Upload</a>
                         <a href="panCardPending.php" class="sidenav-link">Pending</a>
+                        <a href="panCardRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
-
-                <!-- <a href="#" class="sidenav-link">Payment Gateway</a> -->
             </div>
 
         </div>

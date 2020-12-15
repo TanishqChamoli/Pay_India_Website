@@ -6,10 +6,10 @@ if (isset($_GET['id'])) {
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	$sql = "UPDATE passport SET status='reject' WHERE id ='$id'";
+	$sql = "UPDATE passport SET status='false' WHERE id ='$id'";
 	$result = mysqli_query($conn, $sql);
 	if ($result == 1) {
-		$address = "http://localhost/Pay%20India%20Website/Admin/passportPending.php";
+		$address = "http://localhost/Pay%20India%20Website/Admin/passportRejected.php";
 		header("Location: " . $address);
 		die();
 	}
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 ?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-$sql = "SELECT * FROM passport where status='false'";
+$sql = "SELECT * FROM passport where status='reject'";
 $result = mysqli_query($conn, $sql);
 $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -108,9 +108,8 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 							<th scope="col">proof_of_birth</th>
 							<th scope="col">residential_birth_proof</th>
 							<th scope="col">other_document</th>
-							<th scope="col">Reject</th>
-							<th scope="col">Reply</th>
-							
+							<th scope="col">Retry</th>
+
 						</tr>
 					</thead>
 					<?php
@@ -119,129 +118,190 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 						<tbody>
 							<tr>
 								<td>
-									<p><?php echo $ans[$x]['apply_for']?></p>
+									<p><?php echo $ans[$x]['apply_for'] ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['type_of_application']?></p>
+									<p><?php echo $ans[$x]['type_of_application'] ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['passport_type']?></p></td>
+									<p><?php echo $ans[$x]['passport_type'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['first_name']?></p></td>
+									<p><?php echo $ans[$x]['first_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['middle_name']?></p></td></td>
+									<p><?php echo $ans[$x]['middle_name'] ?></p>
+								</td>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['surname']?></p></td></td>
+									<p><?php echo $ans[$x]['surname'] ?></p>
+								</td>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['aadhar_no']?></p></td>
+									<p><?php echo $ans[$x]['aadhar_no'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['marital_status']?></p></td>
+									<p><?php echo $ans[$x]['marital_status'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['dob']?></p></td>
+									<p><?php echo $ans[$x]['dob'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['birth_country_india']?></p></td>
+									<p><?php echo $ans[$x]['birth_country_india'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['birthplace']?></p></td>
+									<p><?php echo $ans[$x]['birthplace'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['state1']?></p></td>
+									<p><?php echo $ans[$x]['state1'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['district']?></p></td>
+									<p><?php echo $ans[$x]['district'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['citizenship']?></p></td>
+									<p><?php echo $ans[$x]['citizenship'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['pan_card_no']?></p></td>
+									<p><?php echo $ans[$x]['pan_card_no'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['voter_id']?></p></td>
+									<p><?php echo $ans[$x]['voter_id'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['education_qualification']?></p></td>
+									<p><?php echo $ans[$x]['education_qualification'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['emp_type']?></p></td>
+									<p><?php echo $ans[$x]['emp_type'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['govt_servant']?></p></td>
+									<p><?php echo $ans[$x]['govt_servant'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['non_ncr']?></p></td>
+									<p><?php echo $ans[$x]['non_ncr'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['mark']?></p></td>
+									<p><?php echo $ans[$x]['mark'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['other_names']?></p></td>
+									<p><?php echo $ans[$x]['other_names'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['name_changed']?></p></td>
+									<p><?php echo $ans[$x]['name_changed'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['father_first_name']?></p></td>
+									<p><?php echo $ans[$x]['father_first_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['father_middle_name']?></p></td>
+									<p><?php echo $ans[$x]['father_middle_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['father_surname']?></p></td>
+									<p><?php echo $ans[$x]['father_surname'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['mother_first_name']?></p></td>
+									<p><?php echo $ans[$x]['mother_first_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['mother_middle_name']?></p></td>
+									<p><?php echo $ans[$x]['mother_middle_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['mother_surname']?></p></td>
+									<p><?php echo $ans[$x]['mother_surname'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['guardian_first_name']?></p></td>
+									<p><?php echo $ans[$x]['guardian_first_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['guardian_middle_name']?></p></td>
+									<p><?php echo $ans[$x]['guardian_middle_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['guardian_surname']?></p></td>
+									<p><?php echo $ans[$x]['guardian_surname'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['present_address']?></p></td>
+									<p><?php echo $ans[$x]['present_address'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['house_no']?></p></td>
+									<p><?php echo $ans[$x]['house_no'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['state_province']?></p></td>
+									<p><?php echo $ans[$x]['state_province'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['present_district']?></p></td>
+									<p><?php echo $ans[$x]['present_district'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['pincode']?></p></td>
+									<p><?php echo $ans[$x]['pincode'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['mobile_number']?></p></td>
+									<p><?php echo $ans[$x]['mobile_number'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['email']?></p></td>
+									<p><?php echo $ans[$x]['email'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['address1']?></p></td>
+									<p><?php echo $ans[$x]['address1'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['applicant_name']?></p></td>
+									<p><?php echo $ans[$x]['applicant_name'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['applicant_mobile']?></p></td>
+									<p><?php echo $ans[$x]['applicant_mobile'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['applicant_email']?></p></td>
+									<p><?php echo $ans[$x]['applicant_email'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['certificate1']?></p></td>
+									<p><?php echo $ans[$x]['certificate1'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['passport_detail']?></p></td>
+									<p><?php echo $ans[$x]['passport_detail'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['applied_for_passport']?></p></td>
+									<p><?php echo $ans[$x]['applied_for_passport'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['pending_proceeding']?></p></td>
+									<p><?php echo $ans[$x]['pending_proceeding'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['warrant_or_summon']?></p></td>
+									<p><?php echo $ans[$x]['warrant_or_summon'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['warrant_for_arrest']?></p></td>
+									<p><?php echo $ans[$x]['warrant_for_arrest'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['prohibit_departure']?></p></td>
+									<p><?php echo $ans[$x]['prohibit_departure'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['convicted']?></p></td>
+									<p><?php echo $ans[$x]['convicted'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['refused_denied_passport']?></p></td>
+									<p><?php echo $ans[$x]['refused_denied_passport'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['passport_impounded']?></p></td>
+									<p><?php echo $ans[$x]['passport_impounded'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['passport_revoked']?></p></td>
+									<p><?php echo $ans[$x]['passport_revoked'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['foreign_citizenship']?></p></td>
+									<p><?php echo $ans[$x]['foreign_citizenship'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['passport_other_country']?></p></td>
+									<p><?php echo $ans[$x]['passport_other_country'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['surrendered']?></p></td>
+									<p><?php echo $ans[$x]['surrendered'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['renunciation']?></p></td>
+									<p><?php echo $ans[$x]['renunciation'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['emergency_certi']?></p></td>
+									<p><?php echo $ans[$x]['emergency_certi'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['deported_from_other_country']?></p></td>
+									<p><?php echo $ans[$x]['deported_from_other_country'] ?></p>
+								</td>
 								<td>
-									<p><?php echo $ans[$x]['repatriated']?></p></td>
+									<p><?php echo $ans[$x]['repatriated'] ?></p>
+								</td>
 								<td>
 									<?php if ($ans[$x]['comments'] != "") { ?>
 										<p><?php echo $ans[$x]['comments']; ?></p>
@@ -271,10 +331,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 									} ?>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/passportPending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
-								</td>
-								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/passport.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
+									<a href="http://localhost/Pay%20India%20Website/Admin/passportRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>
 								</td>
 							</tr>
 					<?php

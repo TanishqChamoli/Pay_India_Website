@@ -2,7 +2,7 @@
 <?php
 if (isset($_GET['id'])) {
 	$conn = mysqli_connect('localhost', 'root', '', 'payindia');
-	$sql = "SELECT * FROM ";
+	$sql = "SELECT * FROM pfrefund";
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -35,28 +35,28 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 
 <body>
-	<?php include("sidenav2.php"); ?>
-	<?php include("navbar2.php"); ?>
+	<?php include("sidenav.php"); ?>
+	<?php include("navbar.php"); ?>
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
 		<div class="table-responsive">
 			<?php if (sizeof($ans) > 0) { ?>
 				<table class="table table-bordered" id="datatable">
 					<thead>
-							<th scope="col">Aadhar Card number</th>
-							<th scope="col">UAN number</th>
-							<th scope="col">Pan Card No</th>
-							<th scope="col">Client Name</th>
-							<th scope="col">Mobile</th>
-							<th scope="col">Account number</th>
-							<th scope="col">IFSC code</th>
-							<th scope="col">Father Name</th>
-							<th scope="col">Date of Birth</th>
-							<th scope="col">Job leaving date</th>
-							<th scope="col">Request type</th>
-							<th scope="col">Comments</th>
-							<th scope="col">Other Document</th>
-							<th scope="col">Reject</th>
-							<th scope="col">Reply</th>
+						<th scope="col">Aadhar Card number</th>
+						<th scope="col">UAN number</th>
+						<th scope="col">Pan Card No</th>
+						<th scope="col">Client Name</th>
+						<th scope="col">Mobile</th>
+						<th scope="col">Account number</th>
+						<th scope="col">IFSC code</th>
+						<th scope="col">Father Name</th>
+						<th scope="col">Date of Birth</th>
+						<th scope="col">Job leaving date</th>
+						<th scope="col">Request type</th>
+						<th scope="col">Comments</th>
+						<th scope="col">Other Document</th>
+						<th scope="col">Reject</th>
+						<th scope="col">Reply</th>
 						</tr>
 					</thead>
 					<?php

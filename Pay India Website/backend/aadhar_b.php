@@ -1,5 +1,4 @@
 <?php
-
 $target_dir =  "../uploads/";
 $date = new DateTime();
 
@@ -18,9 +17,15 @@ if (!empty($_POST["comments"])) {
     $comments = $_POST['comments'];
 }
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
+session_start();
+$retailer_email = $_SESSION['retailer'];
 
-$sql = "INSERT INTO aadhar_reprint(aadhar_no,mobile,other_documents,comments) 
-    VALUES('$aadhar_no','$mobile','$other_documents','$comments')";
+$sql = "SELECT * FROM retailers WHERE email = '$retailer_email'";
+$result = mysqli_query($conn, $sql);
+$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$r_id = $ans[0]['id'];
+$sql = "INSERT INTO aadhar_reprint(aadhar_no,mobile,other_documents,comments,r_id) 
+    VALUES('$aadhar_no','$mobile','$other_documents','$comments','$r_id')";
 
 if (mysqli_query($conn, $sql)) {
     header("Location: ../aadharreprint.php?message=successfully added the info!");

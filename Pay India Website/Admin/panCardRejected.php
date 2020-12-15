@@ -6,10 +6,10 @@ if (isset($_GET['id'])) {
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	$sql = "UPDATE insurance SET status='reject' WHERE id ='$id'";
+	$sql = "UPDATE index_pan_card_uti SET status='false' WHERE id ='$id'";
 	$result = mysqli_query($conn, $sql);
 	if ($result == 1) {
-		$address = "http://localhost/Pay%20India%20Website/Admin/insurancePending.php";
+		$address = "http://localhost/Pay%20India%20Website/Admin/panCardRejected.php";
 		header("Location: " . $address);
 		die();
 	}
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 ?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-$sql = "SELECT * FROM insurance where status='false'";
+$sql = "SELECT * FROM index_pan_card_uti where status='reject'";
 $result = mysqli_query($conn, $sql);
 $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -27,7 +27,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pfrefund Pending Homepage</title>
+	<title>Pan Card UTI Pending Homepage</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="../Distributor/style.css"> -->
@@ -43,11 +43,18 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 				<table class="table table-bordered" id="datatable">
 					<thead>
 						<tr>
-							<th scope="col">Registration Number</th>
-							<th scope="col">Policy Expired or not</th>
-							<th scope="col">Last Claim</th>
-							<th scope="col">Reject</th>
-							<th scope="col">Reply</th>
+							<th scope="col">Client Name</th>
+							<th scope="col">UserName</th>
+							<th scope="col">Office Address</th>
+							<th scope="col">Pincode</th>
+							<th scope="col">Mobile</th>
+							<th scope="col">email</th>
+							<th scope="col">State</th>
+							<th scope="col">Firm Name</th>
+							<th scope="col">Aadhar Card no</th>
+							<th scope="col">pan card no</th>
+							<th scope="col">Account Type</th>
+							<th scope="col">Retry</th>
 						</tr>
 					</thead>
 					<?php
@@ -56,19 +63,40 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 						<tbody>
 							<tr>
 								<td>
-									<p><?php echo $ans[$x]['registration_no']; ?></p>
+									<p><?php echo $ans[$x]['client_name']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['policy_expired_or_not']; ?></p>
+									<p><?php echo $ans[$x]['username']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['last_claim']; ?></p>
+									<p><?php echo $ans[$x]['office_address']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurancePending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
+									<p><?php echo $ans[$x]['pincode']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurance.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
+									<p><?php echo $ans[$x]['mobile_number']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['email']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['state1']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['firm_name']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['aadhar_no']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['pan_no']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['account_type']; ?></p>
+								</td>
+								<td>
+									<a href="http://localhost/Pay%20India%20Website/Admin/panCardRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>
 								</td>
 							</tr>
 					<?php

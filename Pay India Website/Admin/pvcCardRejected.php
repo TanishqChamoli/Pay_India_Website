@@ -2,14 +2,14 @@
 <?php
 if (isset($_GET['id'])) {
 	$conn = mysqli_connect('localhost', 'root', '', 'payindia');
-	$sql = "SELECT * FROM ";
+	$sql = "SELECT * FROM votercard";
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	$sql = "UPDATE insurance SET status='reject' WHERE id ='$id'";
+	$sql = "UPDATE pvc_card SET status='false' WHERE id ='$id'";
 	$result = mysqli_query($conn, $sql);
 	if ($result == 1) {
-		$address = "http://localhost/Pay%20India%20Website/Admin/insurancePending.php";
+		$address = "http://localhost/Pay%20India%20Website/Admin/pvcCardRejected.php";
 		header("Location: " . $address);
 		die();
 	}
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 ?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-$sql = "SELECT * FROM insurance where status='false'";
+$sql = "SELECT * FROM pvc_card where status='reject'";
 $result = mysqli_query($conn, $sql);
 $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -27,7 +27,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pfrefund Pending Homepage</title>
+	<title>PVC Card Pending Homepage</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="../Distributor/style.css"> -->
@@ -35,19 +35,22 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 
 <body>
+
 	<?php include("sidenav2.php"); ?>
 	<?php include("navbar2.php"); ?>
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
 		<div class="table-responsive">
 			<?php if (sizeof($ans) > 0) { ?>
+
 				<table class="table table-bordered" id="datatable">
 					<thead>
 						<tr>
-							<th scope="col">Registration Number</th>
-							<th scope="col">Policy Expired or not</th>
-							<th scope="col">Last Claim</th>
-							<th scope="col">Reject</th>
-							<th scope="col">Reply</th>
+							<th scope="col">Name</th>
+							<th scope="col">File_password</th>
+							<th scope="col">Dispatch Address</th>
+							<th scope="col">Mobile</th>
+							<th scope="col">Document</th>
+							<th scope="col">Retry</th>
 						</tr>
 					</thead>
 					<?php
@@ -56,19 +59,22 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 						<tbody>
 							<tr>
 								<td>
-									<p><?php echo $ans[$x]['registration_no']; ?></p>
+									<p><?php echo $ans[$x]['cname']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['policy_expired_or_not']; ?></p>
+									<p><?php echo $ans[$x]['fpass']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['last_claim']; ?></p>
+									<p><?php echo $ans[$x]['dispatch_address']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurancePending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
+									<p><?php echo $ans[$x]['mobile']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurance.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
+									<p><a href="../uploads/<?php echo $ans[$x]['document']; ?>">Document</a></p>
+								</td>
+								<td>
+									<a href="http://localhost/Pay%20India%20Website/Admin/pvcCardRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>
 								</td>
 							</tr>
 					<?php

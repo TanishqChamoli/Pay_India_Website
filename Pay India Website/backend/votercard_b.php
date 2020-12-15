@@ -33,6 +33,13 @@ if (!empty($_POST["comments"])) {
 }
 
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
+session_start();
+$retailer_email = $_SESSION['retailer'];
+
+$sql = "SELECT * FROM retailers WHERE email = '$retailer_email'";
+$result = mysqli_query($conn, $sql);
+$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$r_id = $ans[0]['id'];
 
 $ageproofdocument = $date->format('d-m-Y') . "-" . uniqid() . basename($_FILES["ageproofdocument"]["name"]);
 $targetFilePath = $target_dir . $ageproofdocument;
@@ -43,14 +50,9 @@ $targetFilePath = $target_dir . $addressproofdocument;
 move_uploaded_file($_FILES["addressproofdocument"]["tmp_name"], $targetFilePath);
 
 $sql = "INSERT INTO votercard(name,dob,mobile,relative_name,relative_type,street,village,postoffice,pincode,state,
-    district,ageproof_option,addressproof_option,gender,ageproofdocument,addressproofdocument,otherdocument,comments) 
-    VALUES($name,$dob,$mobile,$relative_name,$relative_type,$street,$village,$postoffice,$pincode,$state,
-    $district,$ageproof_option,$addressproof_option,$gender,$ageproofdocument,$addressproofdocument,$otherdocument,$comments)";
-
-$sql = "INSERT INTO votercard(name,dob,mobile,relative_name,relative_type,street,village,postoffice,pincode,state,
-district,ageproof_option,addressproof_option,gender,ageproofdocument,addressproofdocument,otherdocument,comments) 
+district,ageproof_option,addressproof_option,gender,ageproofdocument,addressproofdocument,otherdocument,comments,r_id) 
 VALUES('$name','$dob','$mobile','$relative_name','$relative_type','$street','$village','$postoffice','$pincode','$state',
-'$district','$ageproof_option','$addressproof_option','$gender','$ageproofdocument','$addressproofdocument','$otherdocument','$comments')";
+'$district','$ageproof_option','$addressproof_option','$gender','$ageproofdocument','$addressproofdocument','$otherdocument','$comments','$r_id')";
 
 if (mysqli_query($conn, $sql)) {
     header("Location: ../votercard.php?message=successfully added the info!");

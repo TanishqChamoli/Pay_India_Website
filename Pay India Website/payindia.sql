@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2020 at 04:03 PM
+-- Generation Time: Dec 13, 2020 at 10:11 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -41,13 +41,6 @@ CREATE TABLE `aadharpan_link` (
   `status` varchar(10) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `aadharpan_link`
---
-
-INSERT INTO `aadharpan_link` (`id`, `name`, `mobile`, `aadhar_no`, `pan_card`, `dob`, `pincode`, `gender`, `other_document`, `comment`, `status`) VALUES
-(3, 'Tanishq', '9888123456', '1234567890', '1234567890', '2000-11-24', 410210, 0, '16-11-2020-5fb1e6f4432d5good_one.jpg', 'Hello world!', 'false');
-
 -- --------------------------------------------------------
 
 --
@@ -62,15 +55,6 @@ CREATE TABLE `aadhar_reprint` (
   `comments` varchar(100) DEFAULT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `aadhar_reprint`
---
-
-INSERT INTO `aadhar_reprint` (`id`, `aadhar_no`, `mobile`, `other_documents`, `comments`, `status`) VALUES
-(5, '1234567890', '1234567890', '10-11-2020-5faaa75731ff0good_one.jpg', '121tefadfasdada', 'false'),
-(6, '123412341234', '9876543210', '', 'This is a test file.', 'true'),
-(7, '1267899876543235678', '1234567890', '', '', 'false');
 
 -- --------------------------------------------------------
 
@@ -94,19 +78,12 @@ CREATE TABLE `admin1` (
 
 CREATE TABLE `admin1_replies` (
   `local_id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `reply` varchar(200) NOT NULL,
+  `q_id` varchar(20) NOT NULL,
+  `type` varchar(50) NOT NULL,
   `comments` varchar(1000) NOT NULL,
-  `q_id` int(10) NOT NULL,
-  `date` varchar(100) NOT NULL
+  `date` varchar(20) NOT NULL,
+  `reply` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin1_replies`
---
-
-INSERT INTO `admin1_replies` (`local_id`, `type`, `reply`, `comments`, `q_id`, `date`) VALUES
-(1, 'itr_gst', '16-11-2020-5fb2941bc75d4good_one.jpg', 'Hello world.', 1, '16-11-2020');
 
 -- --------------------------------------------------------
 
@@ -142,7 +119,8 @@ CREATE TABLE `admin2_replies` (
 --
 
 INSERT INTO `admin2_replies` (`local_id`, `type`, `reply`, `comments`, `q_id`, `date`) VALUES
-(11, 'aadhar_reprint', '16-11-2020-5fb287685466cPIC NDA.jpg', 'This is for the test run.', 6, '16-11-2020');
+(15, 'pvc_card', '18-11-2020-5fb50976c8508aZVF08.jpg', 'Data ajsfadsadmdn', 7, '18-11-2020'),
+(16, 'votercard', '27-11-2020-5fc0eee1bfc88Screenshot (13).png', 'Hogya kaam tera!', 7, '27-11-2020');
 
 -- --------------------------------------------------------
 
@@ -151,14 +129,25 @@ INSERT INTO `admin2_replies` (`local_id`, `type`, `reply`, `comments`, `q_id`, `
 --
 
 CREATE TABLE `bill_payment` (
+  `id` int(20) NOT NULL,
   `payment_type` varchar(50) NOT NULL,
   `ca_number` varchar(50) NOT NULL,
   `operator_circle` varchar(50) NOT NULL,
   `amount` int(50) NOT NULL,
   `operator_circle_1` varchar(50) NOT NULL,
   `due_date` date NOT NULL,
-  `client_name` text NOT NULL
+  `client_name` text NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill_payment`
+--
+
+INSERT INTO `bill_payment` (`id`, `payment_type`, `ca_number`, `operator_circle`, `amount`, `operator_circle_1`, `due_date`, `client_name`, `status`) VALUES
+(3, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'false'),
+(4, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'reject'),
+(5, 'option1', '12345678901234567890', 'Punjab', 1213, 'Punjab State Power Corporation Ltd', '1111-11-24', 'Sonam Garg', 'false');
 
 -- --------------------------------------------------------
 
@@ -167,6 +156,7 @@ CREATE TABLE `bill_payment` (
 --
 
 CREATE TABLE `fssai` (
+  `id` int(11) NOT NULL,
   `aadhar_no` int(12) NOT NULL,
   `pan_card_no` int(10) NOT NULL,
   `business_detail` varchar(255) NOT NULL,
@@ -176,8 +166,17 @@ CREATE TABLE `fssai` (
   `noc` varchar(50) NOT NULL,
   `address_proof` varchar(50) NOT NULL,
   `other_document` varchar(50) NOT NULL,
-  `comments` varchar(255) NOT NULL
+  `comments` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fssai`
+--
+
+INSERT INTO `fssai` (`id`, `aadhar_no`, `pan_card_no`, `business_detail`, `email`, `mobile_number`, `photo_name`, `noc`, `address_proof`, `other_document`, `comments`, `status`) VALUES
+(3, 1234567890, 1234567890, 'Sonam', 'sonam@gmail.com', 987654321, '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '', 'This is a test file.', 'false'),
+(4, 1234567890, 1234567890, 'Sonam', 'sonam@gmail.com', 987654321, '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '1234567890Screenshot (12).png', '', 'This is a test file.', 'false');
 
 -- --------------------------------------------------------
 
@@ -186,6 +185,7 @@ CREATE TABLE `fssai` (
 --
 
 CREATE TABLE `index_pan_card_uti` (
+  `id` int(11) NOT NULL,
   `client_name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `office_address` varchar(50) NOT NULL,
@@ -196,15 +196,9 @@ CREATE TABLE `index_pan_card_uti` (
   `firm_name` varchar(50) NOT NULL,
   `aadhar_no` varchar(16) NOT NULL,
   `pan_no` varchar(10) NOT NULL,
-  `account_type` varchar(50) NOT NULL
+  `account_type` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `index_pan_card_uti`
---
-
-INSERT INTO `index_pan_card_uti` (`client_name`, `username`, `office_address`, `pincode`, `mobile_number`, `email`, `state1`, `firm_name`, `aadhar_no`, `pan_no`, `account_type`) VALUES
-('Tanishq Chamoli', 'tanishq', 'tanishq', 123412, '1234567890', 'tanishq.chamoli@gmail.com', 'Punjab', 'Tanishq', '123456789120', '1234567890', 'Distributor');
 
 -- --------------------------------------------------------
 
@@ -213,10 +207,19 @@ INSERT INTO `index_pan_card_uti` (`client_name`, `username`, `office_address`, `
 --
 
 CREATE TABLE `insurance` (
+  `id` int(11) NOT NULL,
   `registration_no` varchar(50) NOT NULL,
   `policy_expired_or_not` varchar(50) NOT NULL,
-  `last_claim` varchar(50) NOT NULL
+  `last_claim` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `insurance`
+--
+
+INSERT INTO `insurance` (`id`, `registration_no`, `policy_expired_or_not`, `last_claim`, `status`) VALUES
+(4, '123467890', 'option3', 'option1', 'false');
 
 -- --------------------------------------------------------
 
@@ -249,8 +252,7 @@ CREATE TABLE `itr_gst` (
 --
 
 INSERT INTO `itr_gst` (`id`, `client_name`, `firm_name`, `client_email`, `mobile_number`, `firm_type`, `office_address`, `city`, `pincode`, `acc_no`, `ifsc`, `nature_of_business_activity`, `placeofbusiness`, `photo`, `confirm_docs`, `other_document`, `status`) VALUES
-(1, 'Tanishq Chamoli', 'Tanishq', 'tanishqspike114@gmail.com', '9888553116', 'option1', '#463 M Fouji colony Kharar', 'Kharar', '140210', '1234567890987654', '12345678909', 'I am the king.', 'option2', 'Tanishq Chamoligood_one.jpg', 'on', 'Tanishq Chamoli', 'true'),
-(2, 'Sonam Garg', 'Tanishq', 'tanishqspike114@gmail.com', '9888553116', 'option1', '#463 M Fouji colony Kharar', 'Kharar', '140210', '123456789876321', '123456432', 'Hello madam.', 'option1', 'Tanishq Chamoligood_one.jpg', 'on', 'Tanishq Chamoli', 'false');
+(4, 'Tanishq Chamoli', 'Tanishq', 'tanishqspike114@gmail.com', '1234567890', 'option1', '#463 M Fouji colony Kharar', 'Kharar', '140210', '-1234567890', '12345678909', 'Hello', 'option1', 'Tanishq ChamoliScreenshot (12).png', 'on', '', 'false');
 
 -- --------------------------------------------------------
 
@@ -259,6 +261,7 @@ INSERT INTO `itr_gst` (`id`, `client_name`, `firm_name`, `client_email`, `mobile
 --
 
 CREATE TABLE `msme` (
+  `id` int(11) NOT NULL,
   `aadhar_no` varchar(12) NOT NULL,
   `gst_no` varchar(16) NOT NULL,
   `client_name` varchar(50) NOT NULL,
@@ -279,7 +282,8 @@ CREATE TABLE `msme` (
   `physically_handicapped` varchar(50) NOT NULL,
   `comments` varchar(100) NOT NULL,
   `pan_card` varchar(50) NOT NULL,
-  `other_document` varchar(50) NOT NULL
+  `other_document` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -289,6 +293,7 @@ CREATE TABLE `msme` (
 --
 
 CREATE TABLE `pfrefund` (
+  `id` int(11) NOT NULL,
   `aadhar_no` varchar(12) NOT NULL,
   `uan_no` varchar(12) NOT NULL,
   `pan_card_no` varchar(10) NOT NULL,
@@ -301,7 +306,8 @@ CREATE TABLE `pfrefund` (
   `job_leaving_date` date NOT NULL,
   `request_type` varchar(50) NOT NULL,
   `comments` varchar(100) NOT NULL,
-  `other_document` varchar(50) NOT NULL
+  `other_document` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -316,8 +322,8 @@ CREATE TABLE `pvc_card` (
   `fpass` varchar(100) NOT NULL,
   `dispatch_address` varchar(600) NOT NULL,
   `mobile` varchar(20) NOT NULL,
-  `document` varchar(200) NOT NULL,
-  `status` varchar(100) NOT NULL DEFAULT 'false'
+  `document` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -325,8 +331,48 @@ CREATE TABLE `pvc_card` (
 --
 
 INSERT INTO `pvc_card` (`id`, `cname`, `fpass`, `dispatch_address`, `mobile`, `document`, `status`) VALUES
-(2, 'Tanishq Chamoli', 'Strong_pass', 'Home address', '123456789091', '16-11-2020-5fb1db8b95981good_one.jpg', 'false'),
-(3, 'Sonam Garg', '1234', 'Address is correct', '1234567890', '16-11-2020-5fb1dbdf9bc23good_one.jpg', 'true');
+(6, 'Tanishq Chamoli', 'Password', 'Home address', '0987654321', '17-11-2020-5fb33ef62247faZVF08.jpg', 'false'),
+(7, 'Tanishq Chamoli', 'Password', 'Home address', '9888553116', '18-11-2020-5fb508498c153aZVF08.jpg', 'true');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `retailers`
+--
+
+CREATE TABLE `retailers` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `cname` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `nii` int(10) NOT NULL,
+  `tir` int(10) NOT NULL,
+  `np` int(10) NOT NULL,
+  `grr` int(10) NOT NULL,
+  `rbr` int(10) NOT NULL,
+  `lbr` int(10) NOT NULL,
+  `vir` int(10) NOT NULL,
+  `upr` int(10) NOT NULL,
+  `gstreg` int(10) NOT NULL,
+  `pfrefund` int(10) NOT NULL,
+  `fastpanrate` int(10) NOT NULL,
+  `pvc` int(10) NOT NULL,
+  `nadr` int(10) NOT NULL,
+  `udyog` int(10) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(10) NOT NULL DEFAULT 'true'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `retailers`
+--
+
+INSERT INTO `retailers` (`id`, `email`, `mobile`, `cname`, `address`, `nii`, `tir`, `np`, `grr`, `rbr`, `lbr`, `vir`, `upr`, `gstreg`, `pfrefund`, `fastpanrate`, `pvc`, `nadr`, `udyog`, `password`, `create_date`, `status`) VALUES
+(5, 'retailer@test.com', '1234567890', 'Test', 'Home-address', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, '$2y$10$8wpa0qJEmELkhMwFFyBhnOZOMAalc378GE7jUuEp6/.opgI6l.SrO', '2020-11-27 13:39:07', 'true'),
+(6, 'test@test.com', '1234567890', 'Sonam', 'home', 1, 1, 1, 1, 1, 0, 11, 1, 1, 1, 11, 1, 1, 1, '$2y$10$RNzoMMvKM.0kqhIzAgk2m.jS8iKfo783.18WRj7DdalFnmKy.aR5i', '2020-11-27 14:08:15', 'false'),
+(7, 'arjun@test', '1234567890', 'Arjun', 'home', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '$2y$10$44hUGs6OgQeZd37Ajrv4F.9hWA5BQ0ljmpLFH1X1d3Mi/qBcdeFfi', '2020-11-27 17:43:03', 'true');
 
 -- --------------------------------------------------------
 
@@ -362,8 +408,7 @@ CREATE TABLE `votercard` (
 --
 
 INSERT INTO `votercard` (`id`, `name`, `dob`, `mobile`, `relative_name`, `relative_type`, `street`, `village`, `postoffice`, `pincode`, `state`, `district`, `ageproof_option`, `addressproof_option`, `gender`, `ageproofdocument`, `addressproofdocument`, `otherdocument`, `comments`, `status`) VALUES
-(5, 'Tanishq', '2000-11-24', '1234567890', 'PD Mathpal', 'option2', '#463 M Fouji colony Kharar', 'Mohali', 'Mohali', 140210, 'Punjab', 'option2', 'option2', 'option2', 'Male', '13-11-2020-5fae8622041e4Screenshot (12).png', '13-11-2020-5fae86220b021Screenshot (12).png', '', '', 'false'),
-(6, 'Sonam', '2000-08-14', '1234567890', 'Tanishq', 'option1', '#463 M Fouji colony Kharar', 'Mohali', 'Mohali', 140209, 'Punjab', 'option1', 'option1', 'option2', 'Female', '13-11-2020-5fae955365801good_one.jpg', '13-11-2020-5fae955366762good_one.jpg', '13-11-2020-5fae955360460good_one.jpg', 'Hello World!', 'false');
+(7, 'Tanishq', '2000-11-24', '1234567890', 'qwert', 'option1', 'hhvhv', 'Mohali', 'Mohali', 160021, 'Punjab', 'option1', 'option1', 'option1', '', '27-11-2020-5fc0ee13030a6Screenshot (12).png', '27-11-2020-5fc0ee1303e06Screenshot (12).png', '', 'Hello there', 'true');
 
 --
 -- Indexes for dumped tables
@@ -400,15 +445,57 @@ ALTER TABLE `admin2_replies`
   ADD PRIMARY KEY (`local_id`);
 
 --
+-- Indexes for table `bill_payment`
+--
+ALTER TABLE `bill_payment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fssai`
+--
+ALTER TABLE `fssai`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `index_pan_card_uti`
+--
+ALTER TABLE `index_pan_card_uti`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `insurance`
+--
+ALTER TABLE `insurance`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `itr_gst`
 --
 ALTER TABLE `itr_gst`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `msme`
+--
+ALTER TABLE `msme`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pfrefund`
+--
+ALTER TABLE `pfrefund`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pvc_card`
 --
 ALTER TABLE `pvc_card`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `retailers`
+--
+ALTER TABLE `retailers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -425,7 +512,7 @@ ALTER TABLE `votercard`
 -- AUTO_INCREMENT for table `aadharpan_link`
 --
 ALTER TABLE `aadharpan_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `aadhar_reprint`
@@ -437,7 +524,7 @@ ALTER TABLE `aadhar_reprint`
 -- AUTO_INCREMENT for table `admin1_replies`
 --
 ALTER TABLE `admin1_replies`
-  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `admin2`
@@ -449,25 +536,67 @@ ALTER TABLE `admin2`
 -- AUTO_INCREMENT for table `admin2_replies`
 --
 ALTER TABLE `admin2_replies`
-  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `bill_payment`
+--
+ALTER TABLE `bill_payment`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `fssai`
+--
+ALTER TABLE `fssai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `index_pan_card_uti`
+--
+ALTER TABLE `index_pan_card_uti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `insurance`
+--
+ALTER TABLE `insurance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `itr_gst`
 --
 ALTER TABLE `itr_gst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `msme`
+--
+ALTER TABLE `msme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `pfrefund`
+--
+ALTER TABLE `pfrefund`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pvc_card`
 --
 ALTER TABLE `pvc_card`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `retailers`
+--
+ALTER TABLE `retailers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `votercard`
 --
 ALTER TABLE `votercard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,7 +2,7 @@
 <?php
 if (isset($_GET['id'])) {
 	$conn = mysqli_connect('localhost', 'root', '', 'payindia');
-	$sql = "SELECT * FROM ";
+	$sql = "SELECT * FROM aadhar_reprint";
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);

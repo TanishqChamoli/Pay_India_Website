@@ -2,14 +2,14 @@
 <?php
 if (isset($_GET['id'])) {
 	$conn = mysqli_connect('localhost', 'root', '', 'payindia');
-	$sql = "SELECT * FROM ";
+	$sql = "SELECT * FROM aadharpan_link";
 	$id = $_GET['id'];
 	$result = mysqli_query($conn, $sql);
 	$ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	$sql = "UPDATE insurance SET status='reject' WHERE id ='$id'";
+	$sql = "UPDATE aadharpan_link SET status='reject' WHERE id ='$id'";
 	$result = mysqli_query($conn, $sql);
 	if ($result == 1) {
-		$address = "http://localhost/Pay%20India%20Website/Admin/insurancePending.php";
+		$address = "http://localhost/Pay%20India%20Website/Admin/aadhaarUTIPending.php";
 		header("Location: " . $address);
 		die();
 	}
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 ?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'payindia');
-$sql = "SELECT * FROM insurance where status='false'";
+$sql = "SELECT * FROM aadharpan_link where status='false'";
 $result = mysqli_query($conn, $sql);
 $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -27,7 +27,7 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pfrefund Pending Homepage</title>
+	<title>Aadhaar Reprint Pending Homepage</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="../Distributor/style.css"> -->
@@ -40,12 +40,19 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
 		<div class="table-responsive">
 			<?php if (sizeof($ans) > 0) { ?>
+
 				<table class="table table-bordered" id="datatable">
 					<thead>
 						<tr>
-							<th scope="col">Registration Number</th>
-							<th scope="col">Policy Expired or not</th>
-							<th scope="col">Last Claim</th>
+							<th scope="col">Name</th>
+							<th scope="col">Mobile</th>
+							<th scope="col">Aadhar No.</th>
+							<th scope="col">Pan Card</th>
+							<th scope="col">Date of Birth</th>
+							<th scope="col">Pincode</th>
+							<th scope="col">Gender</th>
+							<th scope="col">Other documents</th>
+							<th scope="col">Comments</th>
 							<th scope="col">Reject</th>
 							<th scope="col">Reply</th>
 						</tr>
@@ -56,19 +63,45 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 						<tbody>
 							<tr>
 								<td>
-									<p><?php echo $ans[$x]['registration_no']; ?></p>
+									<p><?php echo $ans[$x]['name']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['policy_expired_or_not']; ?></p>
+									<p><?php echo $ans[$x]['mobile']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['last_claim']; ?></p>
+									<p><?php echo $ans[$x]['aadhar_no']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurancePending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
+									<p><?php echo $ans[$x]['pan_card']; ?></p>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/insurance.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
+									<p><?php echo $ans[$x]['dob']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['pincode']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['gender']; ?></p>
+								</td>
+								<td>
+									<?php if ($ans[$x]['other_document'] != "") { ?>
+										<p><a href="../uploads/<?php echo $ans[$x]['other_document']; ?>">otherdocument</a></p>
+									<?php } else {
+										echo "No attachment";
+									} ?>
+								</td>
+								<td>
+									<?php if ($ans[$x]['comment'] != "") { ?>
+										<p><?php echo $ans[$x]['comment']; ?></p>
+									<?php } else {
+										echo "No comments";
+									} ?>
+								</td>
+								<td>
+									<a href="http://localhost/Pay%20India%20Website/Admin/aadhaarUTIPending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
+								</td>
+								<td>
+									<a href="http://localhost/Pay%20India%20Website/Admin/aadhaarUTIPending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reply"></a>
 								</td>
 							</tr>
 					<?php

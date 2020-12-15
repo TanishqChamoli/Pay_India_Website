@@ -17,7 +17,7 @@
 				<button type="button" class="fa fa-user-circle-o dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Profile</a>
+					<a class="dropdown-item" href="profile1.php">Profile</a>
 					<a class="dropdown-item" href="#">Wallet: Rs 232</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="logout_admin.php">Log Out</a>

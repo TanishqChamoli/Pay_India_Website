@@ -22,18 +22,19 @@
                     <form action="orders.php" method="post">
                         <select name="data">
                             <option value="" selected disabled hidden>Choose here</option>
-                            <option value="itr_gst">ITR/ GST</option>
+                            <option value="itr_gst">GST</option>
+                            <option value="itr">ITR</option>
                             <option value="msme">MSME Registration</option>
                             <option value="votercard">Voter Card</option>
                             <option value="pfrefund">PF Refund</option>
                             <option value="">PAN Card NSDL</option>
                             <option value="">New PAN</option>
-                            <option value="">FORM 49A(To Edit)</option>
+                            <option value="">FORM 49A</option>
                             <option value="index_pan_card_uti">PAN Card UTI</option>
                             <option value="">Find Your PAN</option>
                             <option value="aadhar_reprint">Aadhar Reprint</option>
                             <option value="aadharpan_link">Aadhar PAN Link</option>
-                            <option value="msmeort">Passport</option>
+                            <option value="passport">Passport</option>
                             <option value="pvc_card">PVC Card</option>
                             <option value="bill_payment">Bill Payment</option>
                             <option value="fssai">FSSAI</option>
@@ -52,26 +53,59 @@
                         $r_id = $ans[0]['id'];
                         $sql = "SELECT * FROM $table WHERE r_id = $r_id";
                         $result = mysqli_query($conn, $sql);
-                        if (is_object($result)) {
+                        if ($result->num_rows > 0) {
                             $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                            // print_r($ans);
-                            foreach ($ans as $x) {
-                                print_r($x);
-                    ?>
-
-                    <?php
-                            }
-                        } else {
-                            echo "No data!";
-                        }
-                    }
+                            if (sizeof($ans) > 0) {
+                                $keys = (array_keys($ans[0]));
                     ?>
                 </div>
             </div>
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <div class="col-12 padding-sidenav pr-md-0 main-index">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="datatable">
+                            <thead>
+                                <tr>
+                                    <?php foreach ($keys as $x) { ?>
+                                        <th scope="col"><?php echo $x; ?></th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($ans as $val) {
+                                ?>
+                                    <tr>
+                                        <?php
+                                        foreach ($val as $x) {
+                                        ?>
+                                            <td>
+                                                <p><?php echo $x; ?></p>
+                                            </td>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+                            }
+                        }
+                    } else {
+                        echo "No data!";
+                    }
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

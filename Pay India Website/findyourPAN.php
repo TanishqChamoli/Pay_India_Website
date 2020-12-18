@@ -32,7 +32,7 @@
 						} ?></h3>
 
 				</div>
-		   		<form class="form-container mt-4 form-padding-internal">
+		   		<form class="form-container mt-4 form-padding-internal" action="backend/findyourpan_b.php" method="post" enctype="multipart/form-data">
 
 		   			<div class="form-group">
 					    <label class="required" for="afname">Applicant Full Name</label>
@@ -128,17 +128,17 @@
 					    <label class="required">Gender</label><br>
 					     <div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio" checked>Male
+							    <input type="radio" class="form-check-input" name="optradio" value="Male" checked>Male
 							  </label>
 							</div>
 							<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio">Female
+							    <input type="radio" class="form-check-input" name="optradio" value="Female">Female
 							  </label>
 							</div>
 							<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio">Other
+							    <input type="radio" class="form-check-input" name="optradio" value="Other">Other
 							  </label>
 						</div> 
 					    <!-- <label class="required"><input type="radio" name="gender" value="Male"class="form-check-input" id="exampleInputPassword1">Male</label>

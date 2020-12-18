@@ -73,6 +73,22 @@
                         <a href="panCardRejected.php" class="sidenav-link">Rejected</a>
                     </div>
                 </div>
+                <div class="accordian">
+                    <a href="#form_49a" class="sidenav-link" data-toggle="collapse">Form 49A<i class="fa fa-angle-down float-right pr-3"></i></a>
+                    <div id="form_49a" class="accordian-content collapse">
+                        <a href="panCard.php" class="sidenav-link">Upload</a>
+                        <a href="panCardPending.php" class="sidenav-link">Pending</a>
+                        <a href="panCardRejected.php" class="sidenav-link">Rejected</a>
+                    </div>
+                </div>
+                <div class="accordian">
+                    <a href="#itr" class="sidenav-link" data-toggle="collapse">ITR<i class="fa fa-angle-down float-right pr-3"></i></a>
+                    <div id="itr" class="accordian-content collapse">
+                        <a href="panCard.php" class="sidenav-link">Upload</a>
+                        <a href="panCardPending.php" class="sidenav-link">Pending</a>
+                        <a href="panCardRejected.php" class="sidenav-link">Rejected</a>
+                    </div>
+                </div>
             </div>
 
         </div>

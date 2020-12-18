@@ -16,7 +16,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li>
-                <a href="itr gst.php" class="nav-link">ITR / GST</a>
+                <a href="itr.php" class="nav-link">ITR</a>
+            </li>
+            <li>
+                <a href="itr gst.php" class="nav-link">GST</a>
             </li>
             <li>
                 <a href="msme.php" class="nav-link">MSME Registration</a>
@@ -86,7 +89,8 @@
         <div class="col-md-3 d-none d-md-flex sidenav-index">
             <div class="sidenav">
                 <a href="retailer.php" class="nav-brand"> <img class="navimg" src="shared/images/1.png"></a>
-                <a href="itr gst.php" class="sidenav-link">ITR/ GST</a>
+                <a href="itr.php" class="sidenav-link">ITR</a>
+                <a href="itr gst.php" class="sidenav-link">GST</a>
                 <a href="msme.php" class="sidenav-link">MSME Registration</a>
                 <a href="votercard.php" class="sidenav-link">Voter Card</a>
                 <a href="pfrefund.php" class="sidenav-link">PF Refund</a>

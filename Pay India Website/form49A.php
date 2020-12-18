@@ -31,7 +31,7 @@
 						} ?></h3>
 
 				</div>
-		   		<form class="form-container mt-4 form-padding-internal">
+		   		<form class="form-container mt-4 form-padding-internal" action="backend/form49a_b.php" method="post" enctype="multipart/form-data">
 
 					  <div class="form-group">
 					    <label class="required" for="afname">Area Code</label>
@@ -39,7 +39,7 @@
 					  </div>
 					  <div class="form-group">
 					    <label class="required" for="afname">AO Type</label>
-					    <input type="text" class="form-control" id="aotype" placeholder="AO Type" name="afname" required>
+					    <input type="text" class="form-control" id="aotype" placeholder="AO Type" name="aotype" required>
 					  </div>
 					  <div class="form-group">
 					    <label class="required" for="afname">Range Code</label>
@@ -62,7 +62,7 @@
 					  
 					  <div class="form-group">
 					    <label class="required" for="afname">Applicant Last/Surname</label>
-					    <input type="text" class="form-control" id="surname" placeholder="Last Name" name="afname" required>
+					    <input type="text" class="form-control" id="surname" placeholder="Last Name" name="surname" required>
 					  </div>
 						 
 		   			  <div class="form-group">
@@ -82,12 +82,12 @@
 					    <label class="required" for="gender">Have you ever been known by any other name </label><br>
 					     <div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio" checked>Yes
+							    <input type="radio" class="form-check-input" name="optradio1" value="Yes" checked>Yes
 							  </label>
 							</div>
 							<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio">No
+							    <input type="radio" class="form-check-input" name="optradio1" value="No">No
 							  </label>
 							</div>
 							
@@ -95,16 +95,16 @@
 						<br><p>If Yes Please Fill the  details below</p>
 						<div class="form-group">
 							<label class="required" for="afname">Applicant Last/Surname</label>
-							<input type="text" class="form-control" id="surname" placeholder="Last Name" name="afname" >
+							<input type="text" class="form-control" id="surname" placeholder="Last Name" name="surname2" >
 						  </div>
 							 
 							 <div class="form-group">
 							<label class="required" for="afname">Applicant First Name</label>
-							<input type="text" class="form-control" id="firstname" placeholder="Applicant First Name" name="firstname" >
+							<input type="text" class="form-control" id="firstname" placeholder="Applicant First Name" name="firstname2" >
 						  </div>
 						  <div class="form-group">
 							<label class="required" for="afname">Applicant Last Name</label>
-							<input type="text" class="form-control" id="Lastname" placeholder="Applicant Last Name" name="lastname" >
+							<input type="text" class="form-control" id="Lastname" placeholder="Applicant Last Name" name="lastname2" >
 						  </div>
 
 
@@ -114,17 +114,17 @@
 					    <label class="required" for="gender">Gender</label><br>
 					     <div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio" checked>Male
+							    <input type="radio" class="form-check-input" name="optradio" value="Male" checked>Male
 							  </label>
 							</div>
 							<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio">Female
+							    <input type="radio" class="form-check-input" name="optradio" value="Female">Female
 							  </label>
 							</div>
 							<div class="form-check-inline">
 							  <label class="form-check-label">
-							    <input type="radio" class="form-check-input" name="optradio">Transgender
+							    <input type="radio" class="form-check-input" name="optradio" value="Transgender">Transgender
 							  </label>
 						</div> 
 

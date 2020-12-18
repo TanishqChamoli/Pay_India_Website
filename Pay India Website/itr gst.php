@@ -15,13 +15,13 @@
 	<?php include("sidenav.php"); ?>
 	<div class="col-12 padding-sidenav px-0 pr-md-0">
 		<div class="topnav">
-			<h2 class="formheader">ITR GST</h2>
+			<h2 class="formheader">GST</h2>
 			<?php include("retailer_wallet.php"); ?>
 
 	<div class="col-12 padding-sidenav pr-md-0 main-index">
 
 		<div class="mt-4 mb-0 d-md-none">
-			<h2 class="formheader">ITR/GST</h2>
+			<h2 class="formheader">GST</h2>
 		</div>
 		<div class="mt-4 mb-0 d-md-none">
 			<h3><?php if (!empty($_GET['message'])) {

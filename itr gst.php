@@ -84,7 +84,7 @@
 					</div>
 					<div class="form-group">
 						<label class="required" for="bactivity">Nature Of Business Activity</label>
-						<textarea class="form-control" name="bactivity" id="bactivity" placeholder="Type here..."></textarea>
+						<textarea class="form-control" name="bactivity" id="bactivity" placeholder="Type here..." required></textarea>
 					</div>
 					<div class="form-group">
 						<label class="required" for="placeofbusiness">Whether Place of Business is</label>
@@ -97,27 +97,27 @@
 					</div>
 					<div class="form-group">
 						<label class="required" for="myFile">Upload Passport Size Photo(only jpg,jpeg)</label>
-						<input class="form-control" type="file" id="myFile" name="filename">
+						<input class="form-control" type="file" id="myFile" name="filename" required>
 					</div>
 					<div class="form-group">
 						<label class="required" for="otherdocument">Other Document(pdf)</label>
-						<input class="form-control" type="file" id="otherdocument" name="otherdocument">
+						<input class="form-control" type="file" id="otherdocument" name="otherdocument" required>
 					</div><br><br><br><br><br><br>
 					<div class="form-group"><br>
 						<label class="required" for="gender">Please confirm that you have attached the following documents *</label><br>
 						<div class="form-check-inline">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optradio" value = "Pancard"checked>Pancard
+								<input type="checkbox" class="form-check-input" name="optradio" value="Pancard" checked>Pancard
 							</label>
 						</div>
 						<div class="form-check-inline">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optradio"value = "Aadhar card"> Aadhar card
+								<input type="checkbox" class="form-check-input" name="optradio" value="Aadhar card"> Aadhar card
 							</label>
 						</div>
 						<div class="form-check-inline">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optradio"value = "Bank Passbook/Statement OR Cancelled Cheque"> Bank Passbook/Statement OR Cancelled Cheque
+								<input type="checkbox" class="form-check-input" name="optradio" value="Bank Passbook/Statement OR Cancelled Cheque"> Bank Passbook/Statement OR Cancelled Cheque
 							</label>
 						</div> <br>
 						<!-- <div class="form-group">

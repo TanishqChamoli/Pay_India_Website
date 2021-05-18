@@ -43,10 +43,37 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 				<table class="table table-bordered" id="datatable">
 					<thead>
 						<tr>
-							<th scope="col">Registration Number</th>
-							<th scope="col">Policy Expired or not</th>
-							<th scope="col">Last Claim</th>
-							<th scope="col">Retry</th>
+							<th scope="col">fname</th>
+							<th scope="col">lname</th>
+							<th scope="col">address_person</th>
+							<th scope="col">pincode</th>
+							<th scope="col">state_person</th>
+							<th scope="col">district</th>
+							<th scope="col">city</th>
+							<th scope="col">nfname</th>
+							<th scope="col">nlname</th>
+							<th scope="col">relation</th>
+							<th scope="col">email</th>
+							<th scope="col">phone</th>
+							<th scope="col">typev</th>
+							<th scope="col">typeu</th>
+							<th scope="col">registation</th>
+							<th scope="col">yyear</th>
+							<th scope="col">ddate</th>
+							<th scope="col">nname</th>
+							<th scope="col">model</th>
+							<th scope="col">enginno</th>
+							<th scope="col">chassisno</th>
+							<th scope="col">loan</th>
+							<th scope="col">bankname</th>
+							<th scope="col">enginCap</th>
+							<th scope="col">pai</th>
+							<th scope="col">lil</th>
+							<th scope="col">adhaar</th>
+							<th scope="col">registry</th>
+							<th scope="col">conf1</th>
+							<th scope="col">conf2</th>
+							<th scope="col">comments</th>
 						</tr>
 					</thead>
 					<?php
@@ -55,13 +82,105 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 						<tbody>
 							<tr>
 								<td>
-									<p><?php echo $ans[$x]['registration_no']; ?></p>
+									<p><?php echo $ans[$x]['fname']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['policy_expired_or_not']; ?></p>
+									<p><?php echo $ans[$x]['lname']; ?></p>
 								</td>
 								<td>
-									<p><?php echo $ans[$x]['last_claim']; ?></p>
+									<p><?php echo $ans[$x]['address_person']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['pincode']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['state_person']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['district']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['city']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['nfname']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['nlname']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['relation']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['email']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['phone']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['typev']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['typeu']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['registation']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['yyear']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['ddate']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['nname']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['model']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['enginno']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['chassisno']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['loan']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['bankname']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['enginCap']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['pai']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['lil']; ?></p>
+								</td>
+								<td>
+									<?php if ($ans[$x]['adhaar'] != "") { ?>
+										<a href='../uploads/<?php echo $ans[$x]['adhaar']; ?>'>Open</a></p>
+									<?php } else { ?>
+										<p>There is no data</p>
+									<?php } ?>
+								</td>
+								<td>
+									<?php if ($ans[$x]['registry'] != "") { ?>
+										<a href='../uploads/<?php echo $ans[$x]['registry']; ?>'>Open</a></p>
+									<?php } else { ?>
+										<p>There is no data</p>
+									<?php } ?>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['conf1']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['conf2']; ?></p>
+								</td>
+								<td>
+									<p><?php echo $ans[$x]['comments']; ?></p>
 								</td>
 								<td>
 									<a href="http://localhost/Pay%20India%20Website/Admin/insuranceRejected.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Retry"></a>

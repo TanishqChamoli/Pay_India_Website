@@ -154,7 +154,7 @@
 	.formbtn
 	{
 		grid-column: 1/span 2;
-		width: 30%;
+		/* width: 30%; */
 		font-size: 1.3rem;
 	}
 

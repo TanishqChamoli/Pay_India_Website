@@ -163,13 +163,17 @@ $ans = mysqli_fetch_all($result, MYSQLI_ASSOC);
 									<p><?php echo $ans[$x]['comments']; ?></p>
 								</td>
 								<td>
-									<a href='../uploads/<?php echo $ans[$x]['other_documents']; ?>'>Open</a></p>
+									<?php if ($ans[$x]['other_documents'] != "") { ?>
+										<a href='../uploads/<?php echo $ans[$x]['other_documents']; ?>'>Open</a></p>
+									<?php } else { ?>
+										<p>There is no data</p>
+									<?php } ?>
 								</td>
 								<td>
 									<a href="http://localhost/Pay%20India%20Website/Admin/itrPending.php?id=<?php echo $ans[$x]['id']; ?>"><input type="button" value="Reject"></a>
 								</td>
 								<td>
-									<a href="http://localhost/Pay%20India%20Website/Admin/itr.php?id=<?php echo $ans[$x]['id']; ?>&r_id=<?php echo $ans[$x]['r_id'];?>"><input type="button" value="Reply"></a>
+									<a href="http://localhost/Pay%20India%20Website/Admin/itr.php?id=<?php echo $ans[$x]['id']; ?>&r_id=<?php echo $ans[$x]['r_id']; ?>"><input type="button" value="Reply"></a>
 								</td>
 							</tr>
 					<?php

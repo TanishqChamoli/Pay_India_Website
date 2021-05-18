@@ -21,6 +21,14 @@
             <li>
                 <a href="itr gst.php" class="nav-link">GST</a>
             </li>
+            <!-- Added GST RETURN accordian -->
+            <li class="accordian">
+                <a href="#gstReturn" class="nav-link" data-toggle="collapse">GST Return<i class="fa fa-angle-down float-right"></i></a>
+                <div id="gstReturn" class="accordian-content collapse">
+                    <a href="addClient.php" class="nav-link">Add Client</a><br>
+                    <a href="client-list.php" class="nav-link">Clients List</a>
+                </div>
+            </li>
             <li>
                 <a href="msme.php" class="nav-link">MSME Registration</a>
             </li>
@@ -91,6 +99,14 @@
                 <a href="retailer.php" class="nav-brand"> <img class="navimg" src="shared/images/1.png"></a>
                 <a href="itr.php" class="sidenav-link">ITR</a>
                 <a href="itr gst.php" class="sidenav-link">GST</a>
+                <!-- Added GST RETURN accordian -->
+                <div class="accordian">
+                    <a href="#gstReturn" class="sidenav-link" data-toggle="collapse">GST Return<i class="fa fa-angle-down float-right pr-3"></i></a>
+                    <div id="gstReturn" class="accordian-content collapse">
+                        <a href="addClient.php" class="sidenav-link">Add Client</a>
+                        <a href="client-list.php" class="sidenav-link">Clients List</a>
+                    </div>
+                </div>
                 <a href="msme.php" class="sidenav-link">MSME Registration</a>
                 <a href="votercard.php" class="sidenav-link">Voter Card</a>
                 <a href="pfrefund.php" class="sidenav-link">PF Refund</a>

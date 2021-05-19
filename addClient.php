@@ -34,10 +34,56 @@
 					</h3>
 
 				</div>
-				<form class="form-container mt-4 form-padding-internal" action="backend/itr gst_b.php" method="post" enctype="multipart/form-data">
-                    <label class="required" for="gst">Enter the GST number below and proceed</label>
-					<input type="text" class="form-control" id="gst" placeholder="GST Number" name="gstno" required>
-                    <button type="submit" class="btn btn-primary formbtn mx-auto submit">Submit</button>
+				<form class="form-container mt-4 form-padding-internal" action="backend/addClient_b.php" method="post" enctype="multipart/form-data">
+                    
+
+					<div class="form-group">
+						<label class="required" for="sig">NAME OF AUTHORISED SIGNATORY</label>
+						<input type="text" class="form-control" id="sig" placeholder="Name of authorised signatory" min="0" name="sig" required>
+					</div>
+
+					<div class="form-group">
+						<label class="required" for="mn">Mobile Number</label>
+						<input type="number" class="form-control" id="mn" placeholder="Mobile number" name="mn" required>
+					</div>
+
+					<div class="form-group">
+						<label class="required" for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="Client Name" name="email" required>
+					</div>
+
+					<div class="form-group">
+								<label class="required" for="gst">G.S.T. Number </label>
+								<input type="number" class="form-control" id="gst" placeholder="G.S.T number" min="0" name="gst" required>
+					</div>
+
+
+					
+					<div class="form-group">
+						<label class="required" for="clientname">CLIENT NAME</label>
+						<input type="text" class="form-control" id="clientname" placeholder="Client Name" name="clientname" required>
+					</div>
+
+					<div class="form-group">
+						<label class="required" for="address">ADDRESS</label>
+						<input type="text" class="form-control" id="address" placeholder="Enter Complete address" name="address" required>
+					</div>
+					
+					<div class="form-group">
+								<label class="required">Do you have password of gst portal</label><br>
+								<div class="form-check-inline">
+									<label class="form-check-label">
+										<input type="radio" class="form-check-input" name="gst_portal" value="Yes">Yes
+									</label>
+									</div>
+									<div class="form-check-inline">
+									<label class="form-check-label">
+										<input type="radio" class="form-check-input" name="gst_portal" value="No">No
+									</label>
+									</div>
+								</div>
+
+					<button type="submit" class="btn btn-primary formbtn mx-auto submit">Add Client</button>
 				</form>
 
 			</div>

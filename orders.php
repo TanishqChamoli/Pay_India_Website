@@ -38,6 +38,7 @@
                             <option value="bill_payment">Bill Payment</option>
                             <option value="fssai">FSSAI</option>
                             <option value="insurance">Insurance Form</option>
+                            <option value="client_gst_data">Client Gst Data</option>
                         </select>
                         <button type="submit">Submit</button>
                     </form>

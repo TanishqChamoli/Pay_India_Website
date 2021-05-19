@@ -16,6 +16,14 @@
                 </div>
 
                 <div class="accordian">
+                    <a href="#client_list_gst" class="sidenav-link" data-toggle="collapse">Client List GST<i class="fa fa-angle-down float-right pr-3"></i></a>
+                    <div id="client_list_gst" class="accordian-content collapse">
+                        <a href="client_list_gst.php" class="sidenav-link">Complete</a>
+                        <a href="client_list_gstPending.php" class="sidenav-link">Pending</a>
+                    </div>
+                </div>
+
+                <div class="accordian">
                     <a href="#itr" class="sidenav-link" data-toggle="collapse">ITR<i class="fa fa-angle-down float-right pr-3"></i></a>
                     <div id="itr" class="accordian-content collapse">
                         <a href="itr.php" class="sidenav-link">Complete</a>

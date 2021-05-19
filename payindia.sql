@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2021 at 10:09 AM
+-- Generation Time: May 19, 2021 at 12:35 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -78,6 +78,33 @@ INSERT INTO `aadhar_reprint` (`id`, `aadhar_no`, `mobile`, `other_documents`, `c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `add_client`
+--
+
+CREATE TABLE `add_client` (
+  `id` int(11) NOT NULL,
+  `name_of_authorised_signatory` text NOT NULL,
+  `mobile_number` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `gst_no` varchar(100) NOT NULL,
+  `client_name` text NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `pass_of_gst_portal` text NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `r_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `add_client`
+--
+
+INSERT INTO `add_client` (`id`, `name_of_authorised_signatory`, `mobile_number`, `email`, `gst_no`, `client_name`, `address`, `pass_of_gst_portal`, `status`, `r_id`) VALUES
+(2, 'tgertger', '1231232131312313132', 'test@test.com', '31312312123', 'v', 'hjv', 'Yes', '', 5),
+(3, '1212', '12121', 'q@test.com', '1212', '12121', '1212', 'Yes', '', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin1`
 --
 
@@ -113,7 +140,8 @@ INSERT INTO `admin1_replies` (`local_id`, `type`, `reply`, `comments`, `q_id`, `
 (1, 'itr_gst', '16-11-2020-5fb2941bc75d4good_one.jpg', 'Hello world.', '1', 0, '16-11-2020'),
 (4, 'itr', '07-02-2021-601fbfa02267eScreenshot (12).png', 'Successfull.', '1', 0, '07-02-2021'),
 (5, 'fssai', '07-02-2021-601fd5fb6ed4eScreenshot (12).png', 'This is the final template.', '3', 5, '07-02-2021'),
-(7, 'fssai', '07-02-2021-601fdb2b32ac9Screenshot (12).png', 'This is the final template.', '3', 5, '07-02-2021');
+(7, 'fssai', '07-02-2021-601fdb2b32ac9Screenshot (12).png', 'This is the final template.', '3', 5, '07-02-2021'),
+(8, 'client_gst_data', '19-05-2021-60a4e44c1b825s4.png', 'Testing for the data', '3', 5, '19-05-2021');
 
 -- --------------------------------------------------------
 
@@ -184,6 +212,40 @@ INSERT INTO `bill_payment` (`id`, `payment_type`, `ca_number`, `operator_circle`
 (4, 'option1', '1234567890', 'Punjab', 1234, 'Punjab State Power Corporation Ltd', '2020-02-22', 'Sonam Garg', 'false', ''),
 (5, 'option1', '12345678901234567890', 'Punjab', 1213, 'Punjab State Power Corporation Ltd', '1111-11-24', 'Sonam Garg', 'false', ''),
 (6, 'option2', '12456789', 'Punjab', 1500, 'Punjab State Power Corporation Ltd', '2020-12-15', 'Sonam Garg', 'false', '5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_gst_data`
+--
+
+CREATE TABLE `client_gst_data` (
+  `id` int(11) NOT NULL,
+  `year` varchar(100) NOT NULL,
+  `month` varchar(100) NOT NULL,
+  `y_n` varchar(100) NOT NULL,
+  `purchasebills` varchar(100) NOT NULL,
+  `salebills` varchar(100) NOT NULL,
+  `uploadpurchasebill` varchar(100) NOT NULL,
+  `uploadsalebill` varchar(100) NOT NULL,
+  `comments` varchar(500) NOT NULL,
+  `name_of_authorised_signatory` varchar(100) NOT NULL,
+  `mobile_number` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `gst_no` varchar(100) NOT NULL,
+  `client_name` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `pass_of_gst_portal` varchar(100) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'false',
+  `r_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `client_gst_data`
+--
+
+INSERT INTO `client_gst_data` (`id`, `year`, `month`, `y_n`, `purchasebills`, `salebills`, `uploadpurchasebill`, `uploadsalebill`, `comments`, `name_of_authorised_signatory`, `mobile_number`, `email`, `gst_no`, `client_name`, `address`, `pass_of_gst_portal`, `status`, `r_id`) VALUES
+(3, 'option1', 'option1', 'yes', '', '', '', '', 'fewffqw', 'tgertger', '1231232131312313132', 'test@test.com', '31312312123', 'v', 'hjv', 'Yes', 'true', 5);
 
 -- --------------------------------------------------------
 
@@ -321,19 +383,48 @@ INSERT INTO `index_pan_card_uti` (`id`, `client_name`, `username`, `office_addre
 
 CREATE TABLE `insurance` (
   `id` int(11) NOT NULL,
-  `registration_no` varchar(50) NOT NULL,
-  `policy_expired_or_not` varchar(50) NOT NULL,
-  `last_claim` varchar(50) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'false',
-  `r_id` varchar(100) NOT NULL
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
+  `address_person` varchar(400) NOT NULL,
+  `pincode` int(10) NOT NULL,
+  `state_person` varchar(50) NOT NULL,
+  `district` varchar(50) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `nfname` varchar(100) NOT NULL,
+  `nlname` varchar(100) NOT NULL,
+  `relation` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `typev` varchar(50) NOT NULL,
+  `typeu` varchar(50) NOT NULL,
+  `registation` varchar(100) NOT NULL,
+  `yyear` int(20) NOT NULL,
+  `ddate` varchar(50) NOT NULL,
+  `nname` varchar(50) NOT NULL,
+  `model` varchar(50) NOT NULL,
+  `enginno` varchar(50) NOT NULL,
+  `chassisno` varchar(50) NOT NULL,
+  `loan` varchar(10) NOT NULL,
+  `bankname` varchar(100) NOT NULL,
+  `enginCap` varchar(100) NOT NULL,
+  `pai` varchar(100) NOT NULL,
+  `lil` varchar(100) NOT NULL,
+  `adhaar` varchar(30) NOT NULL,
+  `registry` varchar(100) NOT NULL,
+  `conf1` varchar(100) NOT NULL,
+  `conf2` varchar(100) NOT NULL,
+  `comments` varchar(500) NOT NULL,
+  `r_id` varchar(100) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `insurance`
 --
 
-INSERT INTO `insurance` (`id`, `registration_no`, `policy_expired_or_not`, `last_claim`, `status`, `r_id`) VALUES
-(4, '123467890', 'option3', 'option1', 'false', '5');
+INSERT INTO `insurance` (`id`, `fname`, `lname`, `address_person`, `pincode`, `state_person`, `district`, `city`, `nfname`, `nlname`, `relation`, `email`, `phone`, `typev`, `typeu`, `registation`, `yyear`, `ddate`, `nname`, `model`, `enginno`, `chassisno`, `loan`, `bankname`, `enginCap`, `pai`, `lil`, `adhaar`, `registry`, `conf1`, `conf2`, `comments`, `r_id`, `status`) VALUES
+(5, 'test', 'test', '1362', 130021, 'Punjab', 'option1', 'chd', 'chd', 'chd', 'chd', 'ccettuidea@gmail.com', '9999191', 't', '99', '12112', 1212, '2021-05-12', 'nq', '9', '9', 'q12121', 'Yes', 'nq', '1212', 'Personal Accidental Insurance of Rs. 15 Lac', 'Limited Insured Liability To Rs 6000', '', '', 'true', 'true', 'This is a test.', '5', 'false'),
+(6, 'test', 'test', '1362', 130021, 'Punjab', 'option1', 'chd', 'chd', 'chd', 'chd', 'ccettuidea@gmail.com', '9999191', 't', '99', '12112', 1212, '2021-05-12', 'nq', '9', '9', 'q12121', 'Yes', 'nq', '1212', 'Personal Accidental Insurance of Rs. 15 Lac', 'false', '2021-05-12-609ba15322401t2.png', '', 'true', 'true', 'This is a test.', '5', 'false');
 
 -- --------------------------------------------------------
 
@@ -380,7 +471,10 @@ CREATE TABLE `itr` (
 --
 
 INSERT INTO `itr` (`id`, `ayear`, `incomedetails`, `anualsalary`, `note`, `salary`, `abia`, `businessname`, `bid`, `aria`, `rid`, `aosa`, `osd`, `aaia`, `aid`, `lip`, `csf`, `ppf`, `hip`, `odus`, `gdoodus`, `oa`, `gdooa`, `everify`, `balancereturn`, `capitalgain`, `taxpayable`, `comments`, `other_documents`, `status`, `r_id`) VALUES
-(1, '1', 'Call my customer', 1, 'Tanishq Chamoli', 'hh', 1111, 'jjb', 'j', 11111, 'j', 111111, 'jbjbjb', 111, 'b', 1111, 111, 111, 11, 11, 'j', 111, 'bj', 'No', 'Yes', 'Yes', 123121, 'g gn kgh', '07-02-2021-601fad2a921b3Screenshot (12).png', 'true', 5);
+(1, '1', 'Call my customer', 1, 'Tanishq Chamoli', 'hh', 1111, 'jjb', 'j', 11111, 'j', 111111, 'jbjbjb', 111, 'b', 1111, 111, 111, 11, 11, 'j', 111, 'bj', 'No', 'Yes', 'Yes', 123121, 'g gn kgh', '07-02-2021-601fad2a921b3Screenshot (12).png', 'true', 5),
+(3, '1', 'I will provide income details', 1000, 'Test', 'Test', 9001820, 'Test', 'test', 98192, 'Test', 12323, 'test', 12312313, 'test', 121212, 121212, 121212, 12121, 1112, 'j12121', 121212, 'test', 'Yes', 'Yes', 'Yes', 2147483647, 'Test data', '', 'false', 5),
+(4, '1', 'I will provide income details', 132123, '1313', '231', 1231, '1231', '12313', 1231, '123', 123, '123', 123, '123', 132, 312, 13, 132, 132, '312', 132, '132', 'Yes', 'Yes', 'No', 12313, '123123123213123123112312312313123', '', 'false', 5),
+(5, '2', 'Call my customer', 0, '', '', 0, '', '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, '', 0, '', 'Yes', 'Yes', 'Yes', 123123, '2312313', '', 'false', 5);
 
 -- --------------------------------------------------------
 
@@ -729,6 +823,12 @@ ALTER TABLE `aadhar_reprint`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `add_client`
+--
+ALTER TABLE `add_client`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `admin1_replies`
 --
 ALTER TABLE `admin1_replies`
@@ -750,6 +850,12 @@ ALTER TABLE `admin2_replies`
 -- Indexes for table `bill_payment`
 --
 ALTER TABLE `bill_payment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_gst_data`
+--
+ALTER TABLE `client_gst_data`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -853,10 +959,16 @@ ALTER TABLE `aadhar_reprint`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `add_client`
+--
+ALTER TABLE `add_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `admin1_replies`
 --
 ALTER TABLE `admin1_replies`
-  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `local_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `admin2`
@@ -875,6 +987,12 @@ ALTER TABLE `admin2_replies`
 --
 ALTER TABLE `bill_payment`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `client_gst_data`
+--
+ALTER TABLE `client_gst_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `findyourpan`
@@ -904,19 +1022,19 @@ ALTER TABLE `index_pan_card_uti`
 -- AUTO_INCREMENT for table `insurance`
 --
 ALTER TABLE `insurance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `itr`
 --
 ALTER TABLE `itr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `itr_gst`
 --
 ALTER TABLE `itr_gst`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `msme`
